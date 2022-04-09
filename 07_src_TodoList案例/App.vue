@@ -19,11 +19,7 @@ export default {
   components: { MyHeader, MyList, MyFooter },
   data() {
     return {
-      todos: [
-        { id: '001', title: '吃饭', done: true },
-        { id: '002', title: '睡觉', done: false },
-        { id: '003', title: '洗澡', done: true },
-      ],
+      todos: JSON.parse(localStorage.getItem('todos')) || []
     }
   },
   methods:{
@@ -51,6 +47,12 @@ export default {
           this.todos = this.todos.filter((todo)=>{
               return !todo.done  
           })
+      }
+  },
+  watch:{
+      deep:true,
+      todos(value) {
+          localStorage.setItem('todos',JSON.stringify(value))
       }
   }
 }
