@@ -11,7 +11,7 @@
 <script>
 export default {
   name: 'MyItem',
-  props: ['todo','checkTodo','deleteTodo'],
+  props: ['.todo','checkTodo','deleteTodo'],
   methods:{
       check(id) {
           this.checkTodo(id)

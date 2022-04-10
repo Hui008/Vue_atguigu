@@ -1,88 +1,44 @@
 <template>
-  <div id="root">
-    <div class="todo-container">
-      <div class="todo-wrap">
-        <MyHeader :addTodo="addTodo"></MyHeader>
-        <MyList :todos="todos" :checkTodo='checkTodo' :deleteTodo='deleteTodo'></MyList>
-        <MyFooter :todos="todos" :chooseAllTodo='chooseAllTodo' :clearAllTodo='clearAllTodo'></MyFooter>
-      </div>
+    <div>
+        <h1>{{msg}}</h1>
+        <School :getSchoolName='getSchoolName'></School>
+        <Student @atguigu='getStudentName' @demo='m1'></Student>
+        <!-- <Student ref="student"></Student> -->
     </div>
-  </div>
 </template>
 
 <script>
-import MyHeader from './components/MyHeader.vue'
-import MyList from './components/MyList.vue'
-import MyFooter from './components/MyFooter.vue'
-export default {
-  // eslint-disable-next-line vue/no-unused-components
-  components: { MyHeader, MyList, MyFooter },
-  data() {
-    return {
-      todos: [
-        { id: '001', title: '吃饭', done: true },
-        { id: '002', title: '睡觉', done: false },
-        { id: '003', title: '洗澡', done: true },
-      ],
+    // 引入组件
+    import School from './components/School.vue'
+    import Student from './components/Student.vue'
+
+    export default {
+        name:'App',
+        data(){
+            return {
+                msg:'helloW'
+            }
+        },
+        components:{School,Student},
+        methods:{
+            getSchoolName(SchoolName){
+                console.log('App收到学校名:'+SchoolName)
+            },
+            getStudentName(StudentName) {
+                console.log('App收到学生名字:'+StudentName);
+            },
+            m1() {
+                console.log('demo被触发了');
+            },
+        },
+        mounted(){
+            this.$refs.student.$on('atguigu',this.getStudentName)
+        }
     }
-  },
-  methods:{
-      // 添加
-      addTodo(todo) {
-          this.todos.unshift(todo)
-      },
-      checkTodo(id) {
-          this.todos.forEach((todo)=>{
-              if(todo.id === id) 
-              todo.done = !todo.done
-          })
-      },
-      deleteTodo(id) {
-          this.todos = this.todos.filter((todo)=>{
-              return todo.id !== id
-          })
-      },
-      chooseAllTodo(isAll){
-          this.todos.forEach((todo)=>{
-              return todo.done = isAll
-          })
-      },
-      clearAllTodo() {
-          this.todos = this.todos.filter((todo)=>{
-              return !todo.done  
-          })
-      }
-  }
-}
 </script>
 
-<style>
-/*base*/
-body {
-  background: #fff;
-}
-
-.btn {
-  display: inline-block;
-  padding: 4px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 1px 2px rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
-}
-
-.todo-container {
-  width: 600px;
-  margin: 0 auto;
-}
-.todo-container .todo-wrap {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
+<style scoped>
+    div {
+        background-color: #ccc;
+    }
 </style>
