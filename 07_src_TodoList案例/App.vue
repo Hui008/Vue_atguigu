@@ -24,8 +24,8 @@ export default {
   },
   methods:{
       // 添加
-      addTodo(todo) {
-          this.todos.unshift(todo)
+      addTodo(todoObj) {
+          this.todos.unshift(todoObj)
       },
       checkTodo(id) {
           this.todos.forEach((todo)=>{

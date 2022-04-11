@@ -3,7 +3,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader @addTodo='addTodo'></MyHeader>
-        <MyList :todos="todos" :deleteTodo='deleteTodo'></MyList>
+        <MyList :todos="todos" :checkTodo='checkTodo' :deleteTodo='deleteTodo'></MyList>
         <MyFooter :todos="todos" @chooseAllTodo='chooseAllTodo' @clearAllTodo='clearAllTodo'></MyFooter>
       </div>
     </div>
@@ -49,15 +49,6 @@ export default {
           })
       }
   },
-  mounted() {
-    this.$bus.$on('checkTodo',this.checkTodo),
-    this.$bus.$on('deleteTodo',this.deleteTodo)
-    },
-    beforeDestroy() {
-        this.$bus.$off('checkTodo')
-        this.$bus.$off('deleteTodo')
-
-    },
   watch:{
       deep:true,
       todos(value) {

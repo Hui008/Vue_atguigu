@@ -8,7 +8,6 @@
 import {nanoid} from 'nanoid' 
 export default {
   name: 'MyHeader',
-  props:['addTodo'],
   data() {
       return {
           title:''
@@ -16,12 +15,12 @@ export default {
   },
   methods:{
       add() {
-          // 校验数据
+          // 校验数据h
           if(!this.title.trim()) return alert('不能输入空值')
         // 用户的输入包装成一个todo对象
-        const todoObj = {id:nanoid(),title:this.title,done:false}
+        const todo = {id:nanoid(),title:this.title,done:false}
         // console.log(todoObj);
-        this.addTodo(todoObj)
+        this.$emit('addTodo',todo)
         this.title=""
       }
   }
