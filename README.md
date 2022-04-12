@@ -26,9 +26,34 @@
 
 
 
+## pubsub(消息订阅与发布)
+1. 一种组件间通信技术
+2. 使用步骤
+    1. 安装外部库:```npm i pubsub```
+    2. 引入:```import pubsub from 'pubsub-js'```
+    3. 接收数据: A组件要接受消息，则在A组件中订阅消息，订阅的<span style="color:red">回调函数留在A组件内部</span>
+        ```
+        methods() {
+            demo(data){......}
+        }
+        ......
+        mounted() {
+            this.pid = pubsub.subscribe('xxx',this.demo)
+        } 
+        ```
+    4. 提供数据 ``` pubsub.publish('xxx',数据)```
+    5. 结束后在<span style="color:red">beforeDestory</span>钩子中用```pubsub.unsubscribe(pid)```去<span style="color:red">取消订阅</span>
 
 
 
+## 检测对象是否含有某个属性
+~~~vue
+```
+if(Object.prototype.hasOwnProperty.call(objectName,'property')){
+    .....
+	}
+```
+~~~
 
 
 
