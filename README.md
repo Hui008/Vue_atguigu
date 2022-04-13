@@ -57,7 +57,9 @@ if(Object.prototype.hasOwnProperty.call(objectName,'property')){
 
 
 
-
+## 配置代理
+    1. 获取外部Api:axios
+        ``` npm i axios ```
 
 
 
