@@ -1,18 +1,33 @@
 <template>
-  <div id="app">
-    <div class="container">
-        <Search></Search>
-        <List></List>
-    </div>
-</div>
+  <div class="container">
+      <Category title="美食分类">
+          <img src="https://s3.ax1x.com/2021/01/16/srJlq0.jpg" alt="">
+      </Category>
+      <Category title="游戏分类" :listData="games"></Category>
+      <Category title="电影分类">
+          <video controls src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"></video>
+      </Category>
+  </div>
 </template>
 
 <script>
-import List from './components/List.vue'
-import Search from './components/Search.vue'
-    export default {
-        name:'App',
-        components:{List,Search},
-        
+import Category from './components/Category.vue'
+export default {
+    name:'App',
+    components:{Category},
+    data() {
+        return {
+            foods:['火锅','烧烤','小龙虾','牛排'],
+            games:['红色警戒','穿越火线','劲舞团','超级玛丽'],
+            films:['《教父》','《拆弹专家》','《你好，李焕英》','《尚硅谷》']
+        }
     }
+}
 </script>
+
+<style>
+.container{
+		display: flex;
+		justify-content: space-around;
+	}
+</style>
