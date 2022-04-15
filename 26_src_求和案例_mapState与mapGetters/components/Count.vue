@@ -3,7 +3,6 @@
       <h1>当前求和为{{sum}}</h1>
       <h1>当前求和的十倍为{{bigSum}}</h1>
       <h2>我在{{school}},学习{{object}}</h2>
-      <h3>下方的组件总人数为{{personList.length}}</h3>
       <select v-model="n">
           <option  :value="1">1</option>
           <option  :value="2">2</option>
@@ -22,7 +21,8 @@ export default {
     name:'CounT',
     data(){
         return {
-            n : 1, // 用户选择的数字  
+            n : 1, // 用户选择的数字
+            
         }
     },
     methods:{
@@ -58,7 +58,7 @@ export default {
         // 借助mapState生成计算属性
         // ...mapState({sum:'sum', school:'school', object:'object'})
 
-        ...mapState(['sum','school','object','personList']),
+        ...mapState(['sum','school','object']),
 
         //借助mapGetters生成计算属性
         // ...mapGetters({bigSum:'bigSum'}

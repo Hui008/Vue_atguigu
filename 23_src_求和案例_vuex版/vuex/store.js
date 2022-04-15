@@ -48,27 +48,15 @@ const mutations  = {
         console.log('mutation中的ADDODD被调用了');
         state.sum += value
     },
-    ADD_PERSONS(state,personObj) {
-        console.log('mutation中的AADD_PERSONS被调用了');
-        state.personList.unshift(personObj)
-    }
 }
 // 准备state 用于存放数据
 const state = {
-    sum : 0, // 当前的和
-    school:'尚硅谷',
-    object:'Vue',
-    personList:[{name:'张三',id:'1'}]
+    sum : 0 // 当前的和
 }
 
-const getters ={
-    bigSum(state) {
-        return state.sum*10
-    }
-}
 // 创建并导出store
 export default  new Vuex.Store({
-    actions,mutations,state,getters
+    actions,mutations,state
 })
 
 

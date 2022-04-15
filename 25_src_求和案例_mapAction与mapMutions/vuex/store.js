@@ -32,11 +32,11 @@ const actions ={
 }
 // 准备mutation 用于操作数据(state)
 const mutations  = {
-    add(state,value){
+    ADD(state,value){
         console.log('mutation中的ADD被调用了');
         state.sum += value
     },
-    minus(state,value){
+    MINUS(state,value){
         console.log('mutation中的MINUS被调用了');
         state.sum -= value
     },
@@ -45,20 +45,15 @@ const mutations  = {
         state.sum += value
     },
     ADDWAIT(state,value){
-        console.log('mutation中的ADDODD被调用了');
+        console.log('mutation中的ADDWAIT被调用了');
         state.sum += value
     },
-    ADD_PERSONS(state,personObj) {
-        console.log('mutation中的AADD_PERSONS被调用了');
-        state.personList.unshift(personObj)
-    }
 }
 // 准备state 用于存放数据
 const state = {
     sum : 0, // 当前的和
     school:'尚硅谷',
-    object:'Vue',
-    personList:[{name:'张三',id:'1'}]
+    object:'Vue'
 }
 
 const getters ={

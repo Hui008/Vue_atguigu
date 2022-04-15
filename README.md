@@ -63,7 +63,14 @@ if(Object.prototype.hasOwnProperty.call(objectName,'property')){
 
 
 
-
+## 引入唯一的id值
+1. 获取nanoid ```npm i nanoid```
+2. 引用nanoid
+```
+    import {nanoid} from 'nanoid'
+```
+3. 使用nanoid
+```const personObj = {id:nanoid()}```
 
 
 
