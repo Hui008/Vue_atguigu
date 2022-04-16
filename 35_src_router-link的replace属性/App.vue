@@ -17,7 +17,9 @@
         <div class="panel">
           <div class="panel-body">
             <h2>
-                <router-view></router-view>
+                <router-view>
+                    展示区——————取决于用户点击的组件
+                </router-view>
             </h2>
           </div>
         </div>

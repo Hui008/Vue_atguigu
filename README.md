@@ -124,6 +124,10 @@ This is [an example](http://example.com/ "Title") inline link.
 [This link](http://example.net/) has no title attribute.
 
 
+## 路由组件特有生命周期钩子
+1. activated
+2. deactivated
+
 
 ---
 

@@ -1,7 +1,9 @@
 <template>
 	<div>
     <div class="row">
-      <Banner></Banner>
+      <div class="col-xs-offset-2 col-xs-8">
+        <div class="page-header"><h2>Vue Router Demo</h2></div>
+      </div>
     </div>
     <div class="row">
       <div class="col-xs-2 col-xs-offset-2">
@@ -9,15 +11,17 @@
           <!-- <a class="list-group-item active" href="./about.html">About</a>
           <a class="list-group-item" href="./home.html">Home</a> -->
 
-          <router-link replace class="list-group-item" active-class="active" :to="{name:'guanyu'}">About</router-link>
-          <router-link replace class="list-group-item" active-class="active" to="/home">Home</router-link>
+          <router-link class="list-group-item" active-class="active" to="/About">About</router-link>
+          <router-link class="list-group-item" active-class="active" to="/Home">Home</router-link>
         </div>
       </div>
       <div class="col-xs-6">
         <div class="panel">
           <div class="panel-body">
             <h2>
-                <router-view></router-view>
+                <router-view>
+                    展示区——————取决于用户点击的组件
+                </router-view>
             </h2>
           </div>
         </div>
@@ -27,9 +31,10 @@
 </template>
 
 <script>
-    import Banner from './components/Banner.vue'
+import About from './components/About.vue'
+import Home from './components/Home.vue'
 	export default {
 		name:'App',
-        components:{Banner}
+        component:{About,Home}
 	}
 </script>
