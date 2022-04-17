@@ -9,11 +9,13 @@ import VueRouter from 'vue-router'
 
 // 创建并暴露一个路由器
 const router = new VueRouter({
+    mode:'history',
     routes:[
         {
             name:"guanyu",
             path:'/about',
-            component:About
+            component:About,
+            meta:{isAuth:false,title:'关于'}
         },
         {
             name:'zhuye',
@@ -24,11 +26,13 @@ const router = new VueRouter({
                     name:'xiaoxi',
                     path:'message',
                     component:Message,
+                    meta:{isAuth:true,title:'消息'},
                     children:[
                         {
                             name:'xiangqing',
                             path:'detail',
                             component:Detail,
+                            meta:{isAuth:false,title:'详情'},
 
                             // props第一种写法 
                             // props:{a:1, b:'hello'}
@@ -45,18 +49,31 @@ const router = new VueRouter({
                 },
                 {
                     path:'news',
-                    component:News
+                    component:News,
+                    meta:{title:'新闻'},
+                    /* beforeEnter:(to,from,next)=>{ // 独享路由守卫
+                        console.log('独享路由守卫',to,from);
+                        if(to.meta.isAuth){ // 判断是否是否需要鉴权
+                            if(localStorage.getItem('school') === 'atguigu') {
+                                next()
+                            } else{
+                                alert('无权限')
+                            }
+                        } else{
+                            next()
+                        }
+                    } */
                 }
             ]
         }
     ]
 })
 
-// 全局前置路由守卫
+/* // 全局前置路由守卫
 router.beforeEach((to,from,next)=>{
-    console.log(to);
-    console.log(from);
-    if(to.path === '/home/news' || to.path === './home/message'){
+    console.log('前置路由守卫',to,from);
+    
+    if(to.meta.isAuth){ // 判断是否是否需要鉴权
         if(localStorage.getItem('school') === 'atguigu') {
             next()
         } else{
@@ -65,6 +82,11 @@ router.beforeEach((to,from,next)=>{
     } else{
         next()
     }
-    
 }) 
+
+// 全局前置路由守卫
+router.afterEach((to,from)=>{
+    document.title = to.meta.title || '硅谷'
+    console.log('后置路由守卫',to,from);
+}) */
 export default router
